@@ -1,0 +1,23 @@
+{
+  "name": "swimlane-experiment",
+  "version": "0.0.1",
+  "description": "An experiment in creating a schedule app",
+  "main": "index.js",
+  "scripts": {
+    "run-server": "http-server ./app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arpit9295/swimlane-experiment.git"
+  },
+  "author": "Arpit Roopchandani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arpit9295/swimlane-experiment/issues"
+  },
+  "homepage": "https://github.com/arpit9295/swimlane-experiment#readme",
+  "dependencies": {
+    "http-server": "^0.11.1",
+    "timelines-chart": "^2.6.3"
+  }
+}
