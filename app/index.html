@@ -1,0 +1,42 @@
+<head>
+  <script src='//unpkg.com/timelines-chart'></script>
+
+  <script src='test-data.js'></script>
+</head>
+
+<body>
+  <script>
+    const timestampsToDate = timeStamps => timeStamps.map(timestamp => new Date(timestamp));
+
+    const statusToLane = status => ({
+      val: status.status,
+      timeRange: timestampsToDate(status.timeSlot)
+    });
+
+    const availabilityToLane = timeSlot => ({
+      val: 'availability',
+      timeRange: timestampsToDate(timeSlot)
+    });
+
+    const profToSwimlane = prof => ({
+      group: prof.name,
+      data: [
+        {
+          label: 'Schedule',
+          data: prof.bookings.map(statusToLane)
+        },
+        {
+          label: 'Availability',
+          data: prof.availability.map(availabilityToLane)
+        }
+      ]
+    });
+
+    const myData = data.staff.map(profToSwimlane);
+
+    TimelinesChart()(document.body)
+      .zScaleLabel('My Scale Units')
+      .zQualitative(false)
+      .data(myData);
+  </script>
+</body>
