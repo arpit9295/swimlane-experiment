@@ -1,5 +1,10 @@
 # swimlane-experiment
 
+Prerequisites -
+
+Node Package Manager (npm)
+
+
 To setup, run the following -
 
 ```
@@ -10,6 +15,7 @@ To run the server, run -
 ```
 npm run run-server
 ```
+Post this, the project can be viewed on http://localhost:8080/
 
 It will run with default data, to change the data, edit `app/test-data.js`.
 
