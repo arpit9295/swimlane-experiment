@@ -14,7 +14,7 @@ const data = [
     }],
   },
   {
-    "name": "Andrews Simon",
+    "name": "Andrews Something",
     "availability": [
       [1525932000000, 1525946400000],
       [1525953600000, 1525975200000],
