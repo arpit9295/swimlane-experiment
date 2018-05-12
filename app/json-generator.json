@@ -1,0 +1,23 @@
+[
+  "{{repeat(10, 20)}}",
+  {
+    "name": "{{firstName()}} {{surname()}}",
+    "availability": [
+      "{{repeat(0, 5)}}",
+      [
+        "{{repeat(2)}}",
+        "{{date(new Date(2018, 4, 1), new Date(2018, 4, 29))}}"
+      ]
+    ],
+    "bookings": [
+      "{{repeat(0, 5)}}",
+      {
+        "status": "{{random('Start', 'Booked', 'Clash', 'Holiday', 'Sick', 'Training', 'Other')}}",
+        "timeSlot": [
+          "{{repeat(2)}}",
+          "{{date(new Date(2018, 4, 1), new Date(2018, 4, 29))}}"
+        ]
+      }
+    ]
+  }
+]
