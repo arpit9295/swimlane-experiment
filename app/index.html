@@ -6,7 +6,25 @@
 
 <body>
   <script>
-    const timestampsToDate = timeStamps => timeStamps.map(timestamp => new Date(timestamp));
+    const todayStart = new Date();
+    todayStart.setHours(0,0,0,0);
+
+    const todayEnd = new Date();
+    todayEnd.setHours(23,59,59,999);
+
+    let minDate;
+    let maxDate;
+
+    const recalculateDateRange = currDate => {
+      const returnDate = new Date(currDate);
+      if (typeof minDate === 'undefined' || returnDate < minDate)
+        minDate = returnDate;
+      if (typeof maxDate === 'undefined' || returnDate > maxDate)
+        maxDate = returnDate;
+      return returnDate;
+    };
+
+    const timestampsToDate = timeStamps => timeStamps.map(recalculateDateRange);
 
     const statusToLane = status => ({
       val: status.status,
@@ -32,11 +50,18 @@
       ]
     });
 
-    const myData = data.staff.map(profToSwimlane);
+    const myData = data.map(profToSwimlane);
+
+    const zoomX = [
+      (minDate < todayStart && todayStart < maxDate) ? todayStart : minDate,
+      (minDate < todayEnd && todayEnd < maxDate) ? todayEnd : maxDate
+    ];
 
     TimelinesChart()(document.body)
+      .leftMargin(150)
       .zScaleLabel('My Scale Units')
-      .zQualitative(false)
-      .data(myData);
+      .zQualitative(true)
+      .data(myData)
+      .zoomX(zoomX)
   </script>
 </body>
